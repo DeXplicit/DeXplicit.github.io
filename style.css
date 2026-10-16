@@ -5,3 +5,5 @@
 
 .project-credits{max-width:1000px;margin:24px auto 0}.project-authors{display:flex;flex-wrap:wrap;justify-content:center;gap:5px 22px;list-style:none;margin:0;padding:0;font-size:18px;font-weight:500;line-height:1.6}.project-authors li{white-space:nowrap}.project-authors a{color:var(--green)}.project-authors a:hover{text-decoration:underline;text-underline-offset:4px}.project-credits sup{font-size:.65em;line-height:0;vertical-align:super;margin-left:2px;color:var(--muted)}.project-affiliations{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 24px;margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--muted)}.project-affiliations span{white-space:nowrap}
 @media(max-width:680px){.project-credits{margin-top:20px}.project-authors{font-size:16px;gap:6px 18px}.project-affiliations{font-size:13px;gap:3px 18px}}
+
+.project-author-notes{margin:6px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}
