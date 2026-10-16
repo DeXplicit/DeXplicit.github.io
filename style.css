@@ -7,3 +7,5 @@
 @media(max-width:680px){.project-credits{margin-top:20px}.project-authors{font-size:16px;gap:6px 18px}.project-affiliations{font-size:13px;gap:3px 18px}}
 
 .project-author-notes{margin:6px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}
+
+.project-resources{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:22px auto 0}.project-resources a{display:inline-flex;align-items:center;gap:14px;padding:10px 20px;border:1px solid var(--green);border-radius:8px;background:var(--green);color:var(--white);font-size:14px;font-weight:650;line-height:1.4}.project-resources a:hover{background:#11675c;border-color:#11675c}.project-resources a span{font-size:16px}
