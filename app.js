@@ -31,7 +31,7 @@ function setScene(scene) {
   const suffix=framing==='crop'?'-crop':'';
   [reference,prediction].forEach((v,i) => { const type=i?'dexplicit':'reference'; v.poster=scene.base+'/'+type+suffix+'.jpg'; v.src=scene.base+'/'+type+suffix+'.mp4'; v.load(); v.playbackRate=Number($('rgb-speed').value); });
   $('rgb-title').textContent=scene.title; $('rgb-tag').textContent=scene.tag; $('rgb-description').textContent=scene.description;
-  $('rgb-source').textContent='HOT3D · Appendix '+scene.paperLabel; $('rgb-window').textContent='Window: clip-'+scene.id+' · frames 0–32 · fixed DeXplicit renderer (14B) checkpoint';
+  $('rgb-source').textContent='HOT3D · Appendix '+scene.paperLabel;
   document.querySelectorAll('.scene-button').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.scene===scene.id)));
   $('rgb-timeline').value=0; $('rgb-frame').textContent='00 / 32';
   const ready=()=>{ if(version===selectionVersion && reference.readyState>=2 && prediction.readyState>=2 && wantPlay && comparisonVisible) playPair(); };
@@ -127,7 +127,7 @@ function setGeometry(s) {
   geometryObjectUrls.forEach(url => URL.revokeObjectURL(url)); geometryObjectUrls = [];
   geometryLoading = true; geometryControls(true);
   $('geometry-title').textContent = s.title;
-  $('geometry-dataset').textContent = s.dataset + ' / SAVED 3D FORECAST';
+  $('geometry-dataset').textContent = s.dataset + ' / PREDICTED GEOMETRY';
   $('geometry-motion').textContent = s.motion.toFixed(1) + ' mm';
   $('geometry-error').textContent = s.error.toFixed(1) + ' mm';
   $('geometry-status').textContent = 'Loading comparison…';
@@ -182,7 +182,7 @@ function setSpatial(s) {
     const f=document.createElement('figure'),img=document.createElement('img'),cap=document.createElement('figcaption'),metric=document.createElement('span');
     img.src=s.paths[key];img.alt=label+' point overlay for '+s.title.toLowerCase();img.loading='lazy';cap.append(document.createTextNode(label));metric.textContent=key==='reference'?'State '+s.state:(key==='ours'?s.error.ours:s.error.pointworld).toFixed(1)+' mm';cap.append(metric);f.append(img,cap);$('spatial-grid').append(f);
   }
-  $('spatial-caption').textContent=s.title+' · '+({'oakink2':'OakInk2','phystwin':'PhysTwin'}[s.dataset]||s.dataset)+' · Points over the same recorded photograph; not generated RGB. '+s.note;
+  $('spatial-caption').textContent=s.title+' · '+({'oakink2':'OakInk2','phystwin':'PhysTwin'}[s.dataset]||s.dataset)+' · Geometry over recorded RGB.';
   document.querySelectorAll('#spatial-selector button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===s.id)));
 }
 for(const s of data.spatial) {const b=document.createElement('button');b.textContent=s.title;b.dataset.id=s.id;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>setSpatial(s));$('spatial-selector').append(b);}setSpatial(data.spatial[2]);
