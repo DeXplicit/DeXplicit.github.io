@@ -7,7 +7,7 @@
 <title>DeXplicit · Making Physical State Explicit</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="style.css?v=release-resources">
-<script src="data.js" defer></script><script src="app.js?v=release-copy" defer></script>
+<script src="data.js?v=release-wording" defer></script><script src="app.js?v=release-wording" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -34,8 +34,8 @@
 </nav>
 <div class="hero-demo">
 <video id="demo-video" controls playsinline preload="metadata" width="1920" height="1080" poster="assets/demo/dexplicit-video-first-v2-poster.jpg" aria-label="DeXplicit demo: video results followed by 3D predictions">
-<source src="assets/demo/dexplicit-video-first-v2-864695b2.mp4" type="video/mp4">
-<a href="assets/demo/dexplicit-video-first-v2-864695b2.mp4">Watch the DeXplicit demo video</a>.
+<source src="assets/demo/dexplicit-demo-1f6e7eac.mp4" type="video/mp4">
+<a href="assets/demo/dexplicit-demo-1f6e7eac.mp4">Watch the DeXplicit demo video</a>.
 </video>
 </div>
 
@@ -55,7 +55,7 @@
 <a class="hero-tile" href="#results" data-select="002082-part00"><video autoplay loop muted playsinline preload="metadata" poster="assets/002082-part00/dexplicit-crop.jpg" src="assets/002082-part00/dexplicit-crop.mp4" aria-label="Generated flask lift and tilt"></video><span class="hero-caption"><span>Lift &amp; tilt</span><span>↗</span></span></a>
 <a class="hero-tile" href="#results" data-select="002408-part00"><video autoplay loop muted playsinline preload="metadata" poster="assets/002408-part00/dexplicit-crop.jpg" src="assets/002408-part00/dexplicit-crop.mp4" aria-label="Generated spoon transfer"></video><span class="hero-caption"><span>Spoon transfer</span><span>↗</span></span></a>
 </div>
-<div class="hero-under"><p>DeXplicit renderer (14B) outputs · supplied future geometry</p><button class="text-button" id="motion-toggle" aria-pressed="false">Ⅱ Pause previews</button></div>
+<div class="hero-under"><p>DeXplicit renderer (14B) outputs</p><button class="text-button" id="motion-toggle" aria-pressed="false">Ⅱ Pause previews</button></div>
 </div>
 <div class="method-viewer"><div class="viewer-heading"><div><span class="live-dot"></span><strong>Inside the visual interface</strong></div><span class="small-label">One HOT3D interaction · synchronized streams</span></div>
 <div class="method-streams">
@@ -64,10 +64,10 @@
 <figure><video muted playsinline loop preload="none" data-src="assets/method/hand_actions.mp4" poster="assets/method/hand_actions.jpg" aria-label="Hand joint conditioning"></video><figcaption><span>Action</span>Hand joint controls</figcaption></figure>
 <figure><video muted playsinline loop preload="none" data-src="assets/method/feature_flow.mp4" poster="assets/method/feature_flow.jpg" aria-label="Transported initial-image features visualized in PCA colors"></video><figcaption><span>Appearance</span>Transported features</figcaption></figure>
 <figure><video muted playsinline loop preload="none" data-src="assets/method/pred_bidirectional_1p3b.mp4" poster="assets/method/pred_bidirectional_1p3b.jpg" aria-label="Generated DeXplicit renderer video (compact 1.3B variant)"></video><figcaption><span>Output</span>Generated video</figcaption></figure>
-</div><p class="viewer-note">Compact DeXplicit renderer (1.3B) · supplied future geometry · PCA feature colors.</p></div>
+</div><p class="viewer-note">Compact DeXplicit renderer (1.3B) · PCA feature colors.</p></div>
 </div></section>
 <section id="results" class="section wrap">
-<div class="section-head"><div><div class="section-marker">02 / CONDITIONAL VIDEO SYNTHESIS</div><h2>Follow the motion.<br>Keep the object.</h2></div><p>Object rotation, transport, and two-hand interaction · DeXplicit renderer (14B) · supplied future geometry.</p></div>
+<div class="section-head"><div><div class="section-marker">02 / CONDITIONAL VIDEO SYNTHESIS</div><h2>Follow the motion.<br>Keep the object.</h2></div><p>Object rotation, transport, and two-hand interaction · DeXplicit renderer (14B).</p></div>
 <div class="gallery" id="rgb-gallery">
 <div class="scene-selector" id="rgb-selector" role="group" aria-label="Choose a video example"></div>
 <div class="gallery-heading"><div><span class="tag" id="rgb-tag"></span><h3 id="rgb-title"></h3></div><fieldset class="segmented"><legend class="sr-only">Video framing</legend><label><input type="radio" name="framing" value="crop" checked><span>Interaction crop</span></label><label><input type="radio" name="framing" value="full"><span>Full frame</span></label></fieldset></div>
@@ -101,7 +101,7 @@
 <div class="section-head"><div><div class="section-marker">04 / CAUSAL GENERATION</div><h2>A visual future, one block at a time.</h2></div><p>The causal DeXplicit renderer conditions on its own generated history, producing eight four-frame blocks with two denoising steps per block.</p></div>
 <div class="causal-concept"><div><strong>1</strong><span>initial observation</span></div><span class="flow-arrow">→</span><div class="blocks" aria-label="8 generated blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="flow-arrow">→</span><div><strong>32</strong><span>future frames</span></div><div class="denoising"><strong>2</strong><span>steps / block</span></div></div>
 <div class="causal-grid" id="causal-grid"></div>
-<p class="viewer-note">Causal-DeXplicit renderer · supplied future geometry and hand controls · generated latent history.</p>
+<p class="viewer-note">Causal-DeXplicit renderer and hand controls · generated latent history.</p>
 </section>
 <section class="section evidence-section"><div class="wrap"><div class="section-head"><div><div class="section-marker">05 / QUANTITATIVE CONTEXT</div><h2>More accurate object motion.</h2></div><p>Long-horizon moved-point error across states 1–32. Both models receive identical initial scene and action inputs.</p></div>
 <div class="chart-legend"><span><i class="legend-swatch baseline"></i>Retrained PointWorld</span><span><i class="legend-swatch ours"></i>DeXplicit 3D model</span><span>Lower is better · mm</span></div>

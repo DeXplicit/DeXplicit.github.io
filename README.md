@@ -19,7 +19,7 @@ For a local preview, open `index.html` in a modern browser or run `python3 -m ht
 
 ## Scientific labels
 
-The 14B and causal rendering examples use supplied future geometry. They are labeled separately from actual 3D forecasting results. The causal paper illustrations overlap the causal training population; their protocol note is retained. Photographic 3D overlays are explicitly identified as recorded backgrounds. Selected example errors and full-cohort benchmark errors are not conflated.
+
 
 Generated RGB was not retouched or frame-interpolated. Crops and viewing-speed changes affect presentation only. The original 3D visualization clips are preserved. Displayed 3D panels crop only surrounding titles and whitespace from those clips; the plotted points and fixed camera are unchanged. Matched recorded RGB and both 3D panels show states 0–32 at the same viewing speed.
 

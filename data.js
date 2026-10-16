@@ -8,7 +8,7 @@ window.DEX_DATA = {
       "paperLabel": "S4",
       "base": "assets/002362-part01",
       "frames": 33,
-      "protocol": "Supplied future geometry \u00b7 DeXplicit renderer (14B)",
+      "protocol": "DeXplicit renderer (14B)",
       "crop": [
         180,
         60,
@@ -24,7 +24,7 @@ window.DEX_DATA = {
       "paperLabel": "S3",
       "base": "assets/002082-part00",
       "frames": 33,
-      "protocol": "Supplied future geometry \u00b7 DeXplicit renderer (14B)",
+      "protocol": "DeXplicit renderer (14B)",
       "crop": [
         160,
         120,
@@ -40,7 +40,7 @@ window.DEX_DATA = {
       "paperLabel": "S1",
       "base": "assets/002408-part00",
       "frames": 33,
-      "protocol": "Supplied future geometry \u00b7 DeXplicit renderer (14B)",
+      "protocol": "DeXplicit renderer (14B)",
       "crop": [
         260,
         180,
@@ -56,7 +56,7 @@ window.DEX_DATA = {
       "paperLabel": "S6",
       "base": "assets/002422-part01",
       "frames": 33,
-      "protocol": "Supplied future geometry \u00b7 DeXplicit renderer (14B)",
+      "protocol": "DeXplicit renderer (14B)",
       "crop": [
         100,
         120,
