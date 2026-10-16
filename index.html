@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="DeXplicit makes physical state explicit in dexterous manipulation world models. Explore metric 3D forecasts, geometry-conditioned video, and efficient causal generation.">
+<meta name="theme-color" content="#f7f8fa">
+<title>DeXplicit · Making Physical State Explicit</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+<script src="data.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><nav aria-label="Main navigation"><a href="#method">Method</a><a href="#results">Video results</a><a href="#geometry">3D forecasts</a><a href="#causal">Causal generation</a></nav></header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="project-title">
+<div class="eyebrow"><span class="mini-orbit" aria-hidden="true"></span>DEXTEROUS MANIPULATION WORLD MODELS</div>
+<div class="project-name" aria-hidden="true">De<span>X</span>plicit</div>
+<h1 id="project-title"><span class="sr-only">DeXplicit: </span>Making Physical State Explicit<br>in Dexterous Manipulation World Models</h1>
+<div class="hero-demo">
+<video id="demo-video" controls playsinline preload="metadata" width="1920" height="1080" poster="assets/demo/dexplicit-video-first-v2-poster.jpg" aria-label="DeXplicit demo: video results followed by 3D predictions">
+<source src="assets/demo/dexplicit-video-first-v2-864695b2.mp4" type="video/mp4">
+<a href="assets/demo/dexplicit-video-first-v2-864695b2.mp4">Watch the DeXplicit demo video</a>.
+</video>
+</div>
+
+</section>
+<section class="thesis wrap"><div class="section-marker">THE IDEA</div><h2>Physical prediction first.<br><span>Visual synthesis second.</span></h2><p>DeXplicit separates the evolution of the physical world from its visual appearance. Given initial scene geometry and a proposed hand trajectory, the DeXplicit 3D model predicts object motion in 3D. Those trajectories guide the DeXplicit renderer, carrying observed appearance into future views.</p></section>
+<section id="method" class="section method-section"><div class="wrap">
+<div class="section-head"><div><div class="section-marker">01 / METHODOLOGY</div><h2>From hand actions to visual futures.</h2></div><p>A structured interface connects the DeXplicit 3D model to the DeXplicit renderer.</p></div>
+<div class="pipeline" aria-label="Method pipeline">
+<div class="pipeline-step"><span class="step-num">01</span><h3>Observe &amp; act</h3><p>Initial image and metric scene points, object identities, hand trajectories, and calibrated cameras.</p><div class="step-tags"><span>Scene</span><span>Hand action</span></div></div>
+<div class="pipeline-step"><span class="step-num">02</span><h3>DeXplicit 3D model</h3><p>Joint-aware actions drive shared object motion, local deformation, and bounded pose refinement.</p><div class="step-tags"><span>Metric dynamics</span></div></div>
+<div class="pipeline-step"><span class="step-num">03</span><h3>Transport appearance</h3><p>Project predicted geometry and initial-image features. Confidence identifies regions to preserve or complete.</p><div class="step-tags"><span>Geometry</span><span>Appearance</span></div></div>
+<div class="pipeline-step"><span class="step-num">04</span><h3>DeXplicit renderer</h3><p>Synthesize conditioned video, with a causal variant that uses its own previously generated history.</p><div class="step-tags"><span>Video readout</span></div></div>
+</div>
+<div class="method-previews">
+<div class="hero-reel" aria-label="Three selected generated videos">
+<a class="hero-tile" href="#results" data-select="002362-part01"><video autoplay loop muted playsinline preload="metadata" poster="assets/002362-part01/dexplicit-crop.jpg" src="assets/002362-part01/dexplicit-crop.mp4" aria-label="Generated toy-house reorientation"></video><span class="hero-caption"><span>Object reorientation</span><span>↗</span></span></a>
+<a class="hero-tile" href="#results" data-select="002082-part00"><video autoplay loop muted playsinline preload="metadata" poster="assets/002082-part00/dexplicit-crop.jpg" src="assets/002082-part00/dexplicit-crop.mp4" aria-label="Generated flask lift and tilt"></video><span class="hero-caption"><span>Lift &amp; tilt</span><span>↗</span></span></a>
+<a class="hero-tile" href="#results" data-select="002408-part00"><video autoplay loop muted playsinline preload="metadata" poster="assets/002408-part00/dexplicit-crop.jpg" src="assets/002408-part00/dexplicit-crop.mp4" aria-label="Generated spoon transfer"></video><span class="hero-caption"><span>Spoon transfer</span><span>↗</span></span></a>
+</div>
+<div class="hero-under"><p>DeXplicit renderer (14B) outputs · supplied future geometry</p><button class="text-button" id="motion-toggle" aria-pressed="false">Ⅱ Pause previews</button></div>
+</div>
+<div class="method-viewer"><div class="viewer-heading"><div><span class="live-dot"></span><strong>Inside the visual interface</strong></div><span class="small-label">One HOT3D interaction · synchronized streams</span></div>
+<div class="method-streams">
+<figure><img src="assets/method/initial_observation.png" alt="Initial observation of hands holding a plate"><figcaption><span>Input</span>Initial observation</figcaption></figure>
+<figure><video muted playsinline loop preload="none" data-src="assets/method/control_3d.mp4" poster="assets/method/control_3d.jpg" aria-label="Projected 3D geometry controls"></video><figcaption><span>Geometry</span>Projected 3D control</figcaption></figure>
+<figure><video muted playsinline loop preload="none" data-src="assets/method/hand_actions.mp4" poster="assets/method/hand_actions.jpg" aria-label="Hand joint conditioning"></video><figcaption><span>Action</span>Hand joint controls</figcaption></figure>
+<figure><video muted playsinline loop preload="none" data-src="assets/method/feature_flow.mp4" poster="assets/method/feature_flow.jpg" aria-label="Transported initial-image features visualized in PCA colors"></video><figcaption><span>Appearance</span>Transported features</figcaption></figure>
+<figure><video muted playsinline loop preload="none" data-src="assets/method/pred_bidirectional_1p3b.mp4" poster="assets/method/pred_bidirectional_1p3b.jpg" aria-label="Generated DeXplicit renderer video (compact 1.3B variant)"></video><figcaption><span>Output</span>Generated video</figcaption></figure>
+</div><p class="viewer-note">Interface illustration with supplied future geometry and the DeXplicit renderer (compact 1.3B variant). Feature colors show PCA components, not RGB appearance.</p></div>
+</div></section>
+<section id="results" class="section wrap">
+<div class="section-head"><div><div class="section-marker">02 / CONDITIONAL VIDEO SYNTHESIS</div><h2>Follow the motion.<br>Keep the object.</h2></div><p>Selected examples from the paper’s appendix. Explore object rotation, transport, and two-hand interaction.</p></div>
+<div class="gallery" id="rgb-gallery">
+<div class="scene-selector" id="rgb-selector" role="group" aria-label="Choose a video example"></div>
+<div class="gallery-heading"><div><span class="tag" id="rgb-tag"></span><h3 id="rgb-title"></h3></div><fieldset class="segmented"><legend class="sr-only">Video framing</legend><label><input type="radio" name="framing" value="crop" checked><span>Interaction crop</span></label><label><input type="radio" name="framing" value="full"><span>Full frame</span></label></fieldset></div>
+<div class="comparison">
+<figure class="video-panel"><figcaption><span class="dot neutral"></span>Recorded reference<span class="panel-meta">GROUND TRUTH</span></figcaption><video id="rgb-reference" muted playsinline preload="metadata" aria-label="Recorded reference video"></video></figure>
+<figure class="video-panel our-panel"><figcaption><span class="dot"></span>DeXplicit renderer<span class="panel-meta">14B · GENERATED</span></figcaption><video id="rgb-prediction" muted playsinline preload="metadata" aria-label="DeXplicit renderer generated video"></video></figure>
+</div>
+<div class="playback"><button id="rgb-play" class="play-button" aria-label="Play comparison">▶</button><button id="rgb-restart" class="restart-button" aria-label="Restart comparison">↺</button><label class="sr-only" for="rgb-timeline">Comparison frame</label><input id="rgb-timeline" type="range" min="0" max="32" step="1" value="0"><output id="rgb-frame" for="rgb-timeline">00 / 32</output><label class="speed-label"><span class="sr-only">Comparison playback speed</span><select id="rgb-speed"><option value="0.25">0.25×</option><option value="0.5" selected>0.5×</option><option value="1">1×</option></select></label></div>
+<div class="gallery-description"><p id="rgb-description"></p><span id="rgb-source" class="small-label"></span></div>
+<div class="protocol-note"><span class="info-icon">i</span><p>These videos isolate <strong>conditional rendering</strong>: the model receives supplied future object geometry and hand actions. Actual geometry forecasts are shown separately below.</p></div>
+<div class="protocol-details"><h4>Selection and playback details</h4><p>Examples were selected from complete generated sequences for visible motion, object identity, and perceptual quality. They are qualitative illustrations, not an additional benchmark or a claim of unseen-source generalization. Reference and generated video use the same frames and crop. The controls play the stored 33-frame clips; viewing speed does not establish acquisition time. No generated frame has been retouched or motion-interpolated.</p><p id="rgb-window" class="mono"></p></div>
+</div>
+</section>
+<section id="geometry" class="section geometry-section"><div class="wrap">
+<div class="section-head"><div><div class="section-marker">03 / METRIC 3D FORECASTING</div><h2>Predict the physical response.</h2></div><p>Actual saved DeXplicit 3D model trajectories, conditioned on the initial scene and hand motion. Watch the recorded RGB video alongside the predicted and ground-truth 3D trajectories.</p></div>
+<div id="geometry-selector" class="pill-selector" role="group" aria-label="Choose a 3D forecast"></div>
+<div class="geometry-viewer" id="geometry-viewer">
+<div class="geometry-heading"><div><span class="small-label" id="geometry-dataset"></span><h3 id="geometry-title"></h3></div><div class="geometry-metrics"><div><strong id="geometry-motion"></strong><span>Focus-object motion</span></div><div><strong id="geometry-error"></strong><span>Endpoint error</span></div></div></div>
+<div class="geometry-comparison">
+<figure class="video-panel"><figcaption><span class="dot neutral"></span>Ground-truth RGB<span class="panel-meta">RECORDED</span></figcaption><video id="geometry-rgb" muted playsinline preload="metadata" aria-label="Ground-truth RGB video for the selected 3D forecast"></video></figure>
+<figure class="video-panel our-panel"><figcaption><span class="dot"></span>DeXplicit 3D model<span class="panel-meta">3D</span></figcaption><video id="geometry-prediction" muted playsinline preload="metadata" aria-label="DeXplicit 3D model predicted trajectory"></video></figure>
+<figure class="video-panel"><figcaption><span class="dot neutral"></span>Ground-truth 3D<span class="panel-meta">REFERENCE</span></figcaption><video id="geometry-reference" muted playsinline preload="metadata" aria-label="Ground-truth 3D trajectory"></video></figure>
+</div>
+<div class="playback"><button id="geometry-play" class="play-button" aria-label="Play 3D comparison">▶</button><button id="geometry-restart" class="restart-button" aria-label="Restart 3D comparison">↺</button><label class="sr-only" for="geometry-timeline">3D comparison frame</label><input id="geometry-timeline" type="range" min="0" max="32" step="1" value="0"><output id="geometry-frame" for="geometry-timeline">00 / 32</output><label class="speed-label"><span class="sr-only">3D comparison playback speed</span><select id="geometry-speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label></div>
+<p class="geometry-note">Matched states 0–32 · synchronized playback at 8 states per second. RGB is recorded ground truth; both 3D panels use the same fixed orthographic view. Colored points show the selected object; the pale outline marks its initial state.</p>
+<p class="geometry-status" id="geometry-status" role="status"></p>
+</div>
+<div class="spatial-head"><h3>Articulation &amp; deformation</h3><p>Selected paper examples projected into the recorded scene. Change the case to inspect the same future state across methods.</p></div>
+<div id="spatial-selector" class="pill-selector" role="group" aria-label="Choose an articulation or deformation example"></div>
+<div class="spatial-grid" id="spatial-grid"></div><p class="viewer-note" id="spatial-caption"></p>
+<div class="protocol-details"><h4>How to read the geometry visualizations</h4><p>The trajectory videos show saved model forecasts, not supplied future geometry. The recorded RGB clip uses the same sample and camera as the initial observation, with frames matched to saved forecast states 0–32. All three videos share playback, frame seeking, and speed controls. RGB supplies visual context and is not a generated prediction. The 3D panels are cropped from the original saved render to remove surrounding titles and whitespace; their plotted points and camera view are unchanged. Point colors in these saved renders represent initial surface appearance; a fixed orthographic camera is used for both panels. The photographed examples overlay saved point predictions using the same calibrated camera and crop. Their background is a recorded future photograph, not generated video. Error values for these examples are selected-state 3D point errors, not full-cohort averages. Local deformation and articulation can remain underpredicted.</p></div>
+</div></section>
+<section id="causal" class="section wrap">
+<div class="section-head"><div><div class="section-marker">04 / CAUSAL GENERATION</div><h2>A visual future, one block at a time.</h2></div><p>The causal DeXplicit renderer conditions on its own generated history, producing eight four-frame blocks with two denoising steps per block.</p></div>
+<div class="causal-concept"><div><strong>1</strong><span>initial observation</span></div><span class="flow-arrow">→</span><div class="blocks" aria-label="8 generated blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="flow-arrow">→</span><div><strong>32</strong><span>future frames</span></div><div class="denoising"><strong>2</strong><span>steps / block</span></div></div>
+<div class="causal-grid" id="causal-grid"></div>
+<p class="viewer-note">Causal-DeXplicit renderer · supplied future geometry and hand controls · generated latent history. These selected paper illustrations overlap the causal training population; held-out quantitative evaluation is separate.</p>
+</section>
+<section class="section evidence-section"><div class="wrap"><div class="section-head"><div><div class="section-marker">05 / QUANTITATIVE CONTEXT</div><h2>More accurate object motion.</h2></div><p>Long-horizon moved-point error across states 1–32. Both models receive identical initial scene and action inputs.</p></div>
+<div class="chart-legend"><span><i class="legend-swatch baseline"></i>Retrained PointWorld</span><span><i class="legend-swatch ours"></i>DeXplicit 3D model</span><span>Lower is better · mm</span></div>
+<div class="benchmark-grid" id="benchmark-grid"></div><p class="viewer-note">Values reproduced from the paper’s metric 3D forecasting table. Errors are weighted by valid point-time counts; these are benchmark aggregates, separate from the selected visual examples.</p>
+</div></section>
+<section class="closing wrap"><div class="section-marker">DEXPLICIT</div><h2>Make the state explicit.<br>Make the future visible.</h2><p>Object-centric dynamics. Transported appearance. Causal visual readout.</p><a class="button primary" href="#results">Explore the results <span aria-hidden="true">↑</span></a></section>
+</main>
+<footer class="wrap"><a class="wordmark" href="#">De<span>X</span>plicit</a><p>Research preview · Selected model outputs</p><a href="#main">Back to top ↑</a></footer>
+<noscript><div class="noscript">Enable JavaScript for the interactive galleries. The selected generated videos above remain available in your browser.</div></noscript>
+</body></html>
